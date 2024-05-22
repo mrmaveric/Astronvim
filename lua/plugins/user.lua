@@ -1,4 +1,14 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- setup neovide
+if vim.g.neovide then
+  vim.g.neovide_scale_factor = 0.5;
+  local alpha = function()
+    return string.format("%x", math.floor((255 * vim.g.transparency) or 0.8))
+  end
+  vim.g.neovide_transparency = 0.9
+  vim.g.transparency = 1
+  vim.g.neovide_background_color = "#0f1117" .. alpha()
+end
+
 
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
@@ -8,12 +18,12 @@ return {
 
   -- == Examples of Adding Plugins ==
 
-  "andweeb/presence.nvim",
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
-  },
+  --"andweeb/presence.nvim",
+  --{
+  --  "ray-x/lsp_signature.nvim",
+  --  event = "BufRead",
+  --  config = function() require("lsp_signature").setup() end,
+  --},
 
   -- == Examples of Overriding Plugins ==
 
@@ -23,17 +33,13 @@ return {
     opts = function(_, opts)
       -- customize the dashboard header
       opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
+        [[     ____.                              __________      .__  .__   ]],
+        [[    |    |____    _____   ____   ______ \______   \__ __|  | |  |  ]],
+        [[    |    \__  \  /     \_/ __ \ /  ___/  |    |  _/  |  \  | |  |  ]],
+        [[/\__|    |/ __ \|  Y Y  \  ___/ \___ \   |    |   \  |  /  |_|  |__]],
+        [[\________(____  /__|_|  /\___  >____  >  |______  /____/|____/____/]],
+        [[              \/      \/     \/     \/          \/                 ]],
+        [[                Hardware, Firmware, Software                       ]],
       }
       return opts
     end,
